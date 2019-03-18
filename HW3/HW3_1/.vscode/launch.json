@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "(Launch) - Main with Arguments Prompt",
+            "request": "launch",
+            "mainClass": "Main",
+            "args": "${workspaceFolder}/src/${command:SpecifyProgramArgs}"
+        }
+    ]
+}
