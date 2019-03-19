@@ -7,9 +7,8 @@ class CountingComponents {
     private Integer[][] matrix;
     private int row;
     private int column;
-    private int count = 0;
+    private Integer count = 0;
     private String fileName;
-
     CountingComponents(String name) {
         fileName = name;
         getCRSizes();
@@ -95,11 +94,19 @@ class CountingComponents {
     /**
      * traverse and print all element in the matrix
      */
-    void printMatrix() {
+    void printMatrix(int convertToChar) {
         for (int r = 0; r < row; r++) {
             for (int c = 0; c < column; c++) {
                 if (matrix != null) {
-                    System.out.print(matrix[r][c]);
+                    if (matrix[r][c] != 0 && convertToChar == 1) {
+                        System.out.print((char)(matrix[r][c] - 2 + 'A'));
+                    } else {
+                        if (convertToChar == 1) {
+                            System.out.print(".");
+                        } else {
+                            System.out.print(matrix[r][c]);
+                        }
+                    }
                 }
             }
             System.out.println(' ');
@@ -117,9 +124,10 @@ class CountingComponents {
         Stack<Integer[]> stack = new Stack<>();
         Integer[] el = { ro, co };
         stack.push(el);
+
         while (!stack.empty()) {
             Integer[] n = stack.pop();
-            matrix[n[0]][n[1]] = 5;
+            matrix[n[0]][n[1]] = count + 2;
             int r = n[0];
             int c = n[1];
             if (c > 0) {
